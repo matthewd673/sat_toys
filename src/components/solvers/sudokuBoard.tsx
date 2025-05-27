@@ -39,7 +39,7 @@ export default function SudokuBoard({ rows, onRowsChange }: SudokuBoardProps) {
 
   return (
     <div>
-      <table>
+      <table className={styles.table}>
         <tbody>
           {rows.map((cols, rowIdx) => (
             <tr key={rowIdx}>
