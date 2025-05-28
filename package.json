@@ -15,7 +15,7 @@
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.0.0",
-    "saguaro_web": "^0.1.0"
+    "saguaro_web": "^0.1.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -2,8 +2,23 @@ import { List } from "immutable";
 import { SudokuCell } from "@/components/solvers/sudokuBoard";
 import { and, bool, formula, Formula, Literal, not, or, Or } from "saguaro_web";
 
+export type VarEncoding = {
+  row: number,
+  column: number,
+  value: number,
+};
+
 export const getVarName = (r: number, c: number, v: number) =>
-  `(${r}, ${c}, ${v})`;
+  `${r},${c},${v}`;
+
+export const parseVarName = (varName: string): VarEncoding => {
+  const parts = varName.split(',').map((str) => Number(str));
+  return {
+    row: parts[0],
+    column: parts[1],
+    value: parts[2],
+  };
+}
 
 const getVar = (r: number, c: number, v: number) =>
   bool(getVarName(r, c, v));
@@ -18,6 +33,10 @@ export const boardToCnf = (board: List<List<SudokuCell>>): Formula => {
   for (let r = 0; r < n; r++) {
     for (let c = 0; c < n; c++) {
       const v = board.get(r)!.get(c)!.value;
+      if (v === 0) { // Don't add constraints for empty cells
+        continue;
+      }
+
       clauseList.push(or([getVar(r, c, v)]));
     }
   }

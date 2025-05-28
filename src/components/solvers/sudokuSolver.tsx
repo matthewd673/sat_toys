@@ -4,7 +4,7 @@ import { useState } from "react";
 import { List } from "immutable";
 import SudokuBoard, { SudokuCell } from "@/components/solvers/sudokuBoard";
 import { Alert, Button } from "react-bootstrap";
-import { boardToCnf, getVarName } from "@/utils/sudokuUtils";
+import { boardToCnf, parseVarName, VarEncoding } from "@/utils/sudokuUtils";
 import { solve } from "saguaro_web";
 import { SolveButton } from "@/components/solveButton";
 
@@ -44,24 +44,18 @@ export default function SudokuSolver() {
     const n = rows.size;
     let workingRows = rows;
 
-    for (let r = 0; r < n; r++) {
-      for (let c = 0; c < n; c++) {
-        for (let v = 1; v <= n; v++) {
-          const varName = getVarName(r, c, v);
-          const assignment = solution.assignments.get(varName);
-          const currentVal = rows.get(r)!.get(c)!.value;
-          const isCellAssigned = currentVal > 0;
-          if (assignment) {
-            workingRows =
-              workingRows.set(r, workingRows.get(r)!.set(c, {
-                value: v,
-                user: isCellAssigned,
-              }));
-            break;
-          }
-        }
-      }
-    }
+    solution.assignments
+      .map(parseVarName)
+      .forEach(({ row, column, value }: VarEncoding) => {
+        const currentVal = rows.get(row)!.get(column)!.value;
+        const isCellAssigned = currentVal > 0;
+
+        workingRows =
+            workingRows.set(row, workingRows.get(row)!.set(column, {
+              value,
+              user: isCellAssigned,
+            }));
+      });
 
     setRows(workingRows);
   }
@@ -85,6 +79,12 @@ export default function SudokuSolver() {
         rows={rows}
         onRowsChange={(newRows) => { setRows(newRows); }}
       />
+      <Button
+        variant="light"
+        onClick={() => { setRows(DEFAULT_ROWS)}}
+      >
+        Clear
+      </Button>
       <SolveButton isLoading={isSolveLoading} onClick={() => onSolve()} />
     </div>
   );
