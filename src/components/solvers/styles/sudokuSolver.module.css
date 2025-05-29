@@ -1,0 +1,13 @@
+.boardContainer {
+    width: min-content;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.buttonContainer {
+    width: 100%;
+    display: flex;
+    gap: 4px;
+    justify-content: right;
+}

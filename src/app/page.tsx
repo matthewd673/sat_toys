@@ -1,29 +1,47 @@
+'use client'
+
 import styles from "./page.module.css";
 import TitleBar from "@/components/titleBar";
-import { Row, Col } from "react-bootstrap";
-import BasicCard from "@/components/basicCard";
+import CardStack from "@/components/cardStack";
+import Button from "@/components/button";
+import { redirect } from "next/navigation";
+import LinkStack from "@/components/linkStack";
 
 export default function Home() {
-  const cards = [
+  const links = [
     {
-      title: "Sudoku",
-      description: "Solve sudoku problems or determine if they have no solution.",
-      href: "/sudoku",
+      text: "Saguaro on GitHub",
+      href: "https://github.com/matthewd673/saguaro",
+    },
+    {
+      text: "Wasm bindings on NPM",
+      href: "https://www.npmjs.com/package/saguaro_web",
     }
   ];
 
+  const cards = [
+    {
+      title: "Sudoku Solver",
+      description: "Solve sudoku puzzles or determine if they have no solution.",
+      href: "/sudoku",
+    },
+    {
+      title: "More to come...",
+      description: "As Saguaro improves, more demos will be added.",
+    },
+  ];
+
   return (
-    <div>
+    <div className={styles.page}>
       <TitleBar
         title="Saguaro SAT Toys"
+        isHome
       />
-      <Row xs={1} md={2} className="g-4">
-        {cards.map((card, idx) => (
-          <Col key={idx}>
-            <BasicCard title={card.title} description={card.description} href={card.href} />
-          </Col>
-        ))}
-      </Row>
+      <LinkStack links={links} />
+      <br/>
+      <CardStack cards={cards} />
+      <br />
+      <a href="http://mattdaly.xyz">mattdaly.xyz</a>
     </div>
   );
 }

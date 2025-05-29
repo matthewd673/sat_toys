@@ -1,12 +1,14 @@
 'use client'
 
+import styles from "./styles/sudokuSolver.module.css";
 import { useState } from "react";
 import { List } from "immutable";
 import SudokuBoard, { SudokuCell } from "@/components/solvers/sudokuBoard";
-import { Alert, Button } from "react-bootstrap";
 import { boardToCnf, parseVarName, VarEncoding } from "@/utils/sudokuUtils";
 import { solve } from "saguaro_web";
 import { SolveButton } from "@/components/solveButton";
+import Alert from "@/components/alert";
+import Button from "@/components/button";
 
 const ZERO = {
   value: 0,
@@ -41,9 +43,7 @@ export default function SudokuSolver() {
 
     setIsUnsat(false);
 
-    const n = rows.size;
     let workingRows = rows;
-
     solution.assignments
       .map(parseVarName)
       .forEach(({ row, column, value }: VarEncoding) => {
@@ -68,24 +68,25 @@ export default function SudokuSolver() {
   }
 
   return (
-    <div>
+    <div className={styles.boardContainer}>
       { isUnsat
-        ? <Alert variant="danger">
-            The puzzle has no solution.
-        </Alert>
+        ? <Alert
+          header="No solution"
+          body="There is no satisfying assignment for this puzzle."
+        />
         : undefined
       }
       <SudokuBoard
         rows={rows}
         onRowsChange={(newRows) => { setRows(newRows); }}
       />
-      <Button
-        variant="light"
-        onClick={() => { setRows(DEFAULT_ROWS)}}
-      >
-        Clear
-      </Button>
-      <SolveButton isLoading={isSolveLoading} onClick={() => onSolve()} />
+      <div className={styles.buttonContainer}>
+        <Button
+          onClick={() => { setRows(DEFAULT_ROWS)}}
+          text="Clear"
+        />
+        <SolveButton isLoading={isSolveLoading} onClick={() => onSolve()} />
+      </div>
     </div>
   );
 }

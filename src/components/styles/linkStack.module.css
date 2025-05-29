@@ -1,0 +1,5 @@
+.linkStack {
+    display: flex;
+    gap: 8px;
+    width: 600px;
+}

@@ -1,10 +1,11 @@
+import styles from "./page.module.css";
 import TitleBar from "@/components/titleBar";
 import SolverWrapper from "@/components/solverWrapper";
 import SudokuSolver from "@/components/solvers/sudokuSolver";
 
 export default function Sudoku() {
   return (
-    <div>
+    <div className={styles.page}>
       <TitleBar title="Sudoku Solver" />
       <p>
           Enter a Sudoku puzzle on the board below, then press &#34;Solve&#34;.

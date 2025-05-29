@@ -1,17 +1,23 @@
-td:first-child {
-    border-left: 3px solid black;
+.board {
+    -webkit-border-vertical-spacing: 0px;
+    -webkit-border-horizontal-spacing: 0px;
+    border-collapse: collapse;
 }
 
-td:nth-child(3n) {
-    border-right: 3px solid black;
-}
-
-tr:first-child {
+.row:first-child {
     border-top: 3px solid black;
 }
 
-tr:nth-child(3n) {
+.row:nth-child(3n) {
     border-bottom: 3px solid black;
+}
+
+.cell:first-child {
+    border-left: 3px solid black;
+}
+
+.cell:nth-child(3n) {
+    border-right: 3px solid black;
 }
 
 .cell {
@@ -28,6 +34,7 @@ tr:nth-child(3n) {
     border: none;
     font-size: 32px;
     outline: none;
+    text-align: center;
 }
 
 .cellInput:focus {

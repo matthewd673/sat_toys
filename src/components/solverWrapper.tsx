@@ -2,9 +2,9 @@
 
 import { JSX, useEffect, useState } from "react";
 import init from "saguaro_web";
-import { Alert, Spinner } from "react-bootstrap";
 import InitSpinner from "@/components/initSpinner";
 import { loadSaguaro } from "@/utils/saguaroUtils";
+import Alert from "@/components/alert";
 
 interface SolverWrapperProps {
   children: JSX.Element,
@@ -25,9 +25,11 @@ export default function SolverWrapper({ children }: SolverWrapperProps) {
   return (
     <div>
       { loadFailed
-        ? (<Alert variant="danger">
-            Failed to load Saguaro. Refresh the page or open it in a different browser to try again.
-        </Alert>)
+        ? (<Alert
+          variant="error"
+          header="Could not load Saguaro"
+          body="Refresh the page or open it in a different browser to try again."
+        />)
         : undefined
       }
       { loading ? <InitSpinner /> : children }

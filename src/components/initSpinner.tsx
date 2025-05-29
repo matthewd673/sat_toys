@@ -1,9 +1,9 @@
-import { Spinner } from "react-bootstrap";
+import Spinner from "@/components/spinner";
 
 export default function InitSpinner() {
   return (
     <div>
-      <Spinner animation="grow"/>
+      <Spinner />
       <p>Loading Saguaro</p>
     </div>
   );

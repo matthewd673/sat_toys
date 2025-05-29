@@ -1,4 +1,4 @@
-import { Button, Spinner } from "react-bootstrap";
+import Button from "@/components/button";
 
 interface SolveButtonProps {
     isLoading: boolean,
@@ -8,15 +8,10 @@ interface SolveButtonProps {
 export function SolveButton({ isLoading, onClick }: SolveButtonProps) {
   return (
     <Button
-      variant="primary"
       onClick={onClick}
       disabled={isLoading}
-    >
-      {isLoading ? <Spinner size="sm" /> : undefined}
-      <span>
-        {" "}
-        {isLoading ? "Solving" : "Solve"}
-      </span>
-    </Button>
+      type="primary"
+      text={isLoading ? "Solving" : "Solve"}
+    />
   );
 }

@@ -1,0 +1,18 @@
+.card {
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: #eee;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    max-width: 600px;
+}
+
+.title {
+    margin: 0px;
+}
+
+.description {
+
+}

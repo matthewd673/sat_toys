@@ -1,0 +1,24 @@
+.button {
+    font-size: 14pt;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-shadow: 1px 1px 0px black;
+    color: black;
+}
+
+.button:active {
+    box-shadow: 0px 0px 0px black;
+    transform: translate(1px, 1px);
+}
+
+.normal {
+    background-color: #ccc;
+}
+
+.primary {
+    background-color: #b0e484;
+}
+
+.link {
+    background-color: #c3c3ff;
+}
