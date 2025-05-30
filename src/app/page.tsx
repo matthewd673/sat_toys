@@ -3,8 +3,6 @@
 import styles from "./page.module.css";
 import TitleBar from "@/components/titleBar";
 import CardStack from "@/components/cardStack";
-import Button from "@/components/button";
-import { redirect } from "next/navigation";
 import LinkStack from "@/components/linkStack";
 
 export default function Home() {
@@ -14,7 +12,11 @@ export default function Home() {
       href: "https://github.com/matthewd673/saguaro",
     },
     {
-      text: "Wasm bindings on NPM",
+      text: "These demos on GitHub",
+      href: "https://github.com/matthewd673/sat_toys",
+    },
+    {
+      text: "Saguaro Wasm bindings on NPM",
       href: "https://www.npmjs.com/package/saguaro_web",
     }
   ];
@@ -27,7 +29,7 @@ export default function Home() {
     },
     {
       title: "More to come...",
-      description: "As Saguaro improves, more demos will be added.",
+      description: "More demos will be added as I improve Saguaro.",
     },
   ];
 

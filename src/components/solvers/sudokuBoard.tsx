@@ -5,7 +5,7 @@ import { Space_Mono } from "next/font/google";
 
 const spaceMono = Space_Mono({
   subsets: ["latin"],
-  weight: "700"
+  weight: "400"
 });
 
 export type SudokuCell = {

@@ -34,6 +34,7 @@ export default function SudokuSolver() {
 
   const runSolve = () => {
     const formula = boardToCnf(rows);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const solution: any = solve(formula);
 
     if (!solution.sat) {
@@ -60,6 +61,18 @@ export default function SudokuSolver() {
     setRows(workingRows);
   }
 
+  const clearNonUserCells = () => {
+    setRows(
+      rows
+        .map((col) =>
+          col
+            .map((cell) =>
+              cell.user ? cell : ZERO
+            )
+        )
+    );
+  }
+
   const onSolve = async () => {
     // TODO: Animation doesn't update
     setIsSolveLoading(true);
@@ -82,8 +95,12 @@ export default function SudokuSolver() {
       />
       <div className={styles.buttonContainer}>
         <Button
-          onClick={() => { setRows(DEFAULT_ROWS)}}
-          text="Clear"
+          onClick={() => { setRows(DEFAULT_ROWS) }}
+          text="Clear All"
+        />
+        <Button
+          onClick={() => { clearNonUserCells() }}
+          text="Clear Red"
         />
         <SolveButton isLoading={isSolveLoading} onClick={() => onSolve()} />
       </div>

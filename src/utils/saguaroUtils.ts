@@ -1,11 +1,9 @@
-import init, { InitOutput } from "saguaro_web";
-
-let saguaroInstance: InitOutput;
+import init from "saguaro_web";
 
 export const loadSaguaro = () =>
   init()
-    .then((result) => {
-      saguaroInstance = result;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    .then((_result) => {
       return true;
     })
     .catch((error) => {

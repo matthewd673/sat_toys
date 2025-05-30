@@ -1,6 +1,8 @@
 {
   "name": "sat_toys",
   "version": "0.1.0",
+  "author": "Matthew Daly",
+  "license": "GPL-3.0-only",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",

@@ -25,7 +25,7 @@
 }
 
 .cell:has(.cellInput:focus) {
-    background-color: yellow;
+    background-color: #ffee9c;
 }
 
 .cellInput {
@@ -38,7 +38,7 @@
 }
 
 .cellInput:focus {
-    background-color: yellow;
+    background-color: #ffee9c;
 }
 
 .userCell {
@@ -46,5 +46,5 @@
 }
 
 .solvedCell {
-    color: red;
+    color: #df3131;
 }

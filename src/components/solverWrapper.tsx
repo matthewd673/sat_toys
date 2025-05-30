@@ -1,7 +1,6 @@
 'use client'
 
 import { JSX, useEffect, useState } from "react";
-import init from "saguaro_web";
 import InitSpinner from "@/components/initSpinner";
 import { loadSaguaro } from "@/utils/saguaroUtils";
 import Alert from "@/components/alert";
@@ -26,7 +25,6 @@ export default function SolverWrapper({ children }: SolverWrapperProps) {
     <div>
       { loadFailed
         ? (<Alert
-          variant="error"
           header="Could not load Saguaro"
           body="Refresh the page or open it in a different browser to try again."
         />)
